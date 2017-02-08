@@ -1,0 +1,67 @@
+#+PROPERTY: tangle yes
+
+* Intro
+
+This is a library of HTML generating functions.  Most functions will
+take one or more arguments, where the first argument is HTML that will
+be wrapped in the tags generated.
+
+
+* html
+
+Generate doctype tag, and wrap argument in html tags.
+
+#+BEGIN_SRC emacs-lisp
+(defun *html* (inner-html)
+  (concat "<!DOCTYPE html><html>" inner-html "</html>")
+)
+#+END_SRC
+
+
+* head
+
+Generate head tag, with encoding meta tag, and wrap argument. 
+
+#+BEGIN_SRC emacs-lisp
+(defun *head* (inner-html)
+  (concat "<head><meta charset=utf-8 />" inner-html "</head>")
+)
+#+END_SRC
+
+
+* title
+
+Create a title element, wrapping the page title.
+
+#+BEGIN_SRC emacs-lisp
+(defun *title* (title)
+  (concat "<title>" title "</title>")
+)
+#+END_SRC
+
+
+* body
+
+Create a body tag, wrapping the argument and
+injecting attributes into the opening tag.
+
+#+BEGIN_SRC emacs-lisp
+(defun *body* (inner-html attributes)
+  (concat "<body " attributes ">" inner-html "</body>")
+)
+#+END_SRC
+
+
+* tag
+
+Create an argument defined tag, wrap the inner-html,
+and inject attributes into the opening tag.
+
+Only use this function if a more specific function does
+not exist.
+
+#+BEGIN_SRC emacs-lisp
+(defun *tag* (tag inner-html attributes)
+  (concat "<" tag " " attributes ">" inner-html "</" tag ">")
+)
+#+END_SRC
