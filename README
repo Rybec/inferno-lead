@@ -1,3 +1,21 @@
 This is a simple framework and collection of servlets designed for use with http://github.com/Rybec/emacs-web-server.
 
 This project is primarily written in literate elisp, in Emacs org files.
+
+
+* Usage
+
+Run make to generate .el files.
+
+Start web server with something like the following:
+emacs -Q -batch -l simple-httpd.el -l app.el -f httpd-batch-start
+
+simple-httpd.el can be found in http://github.com/Rybec/emacs-web-server
+
+* Todo
+
+Have the makefile generate .elc files from the .el files.
+
+Add some sample servlets.
+
+Add more tag generators to html.org.
